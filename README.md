@@ -159,7 +159,7 @@ curl -iX POST \
      "entity_type": "Motion",
      "protocol":    "PDI-IoTA-UltraLight",
      "transport":   "MQTT",
-     "timezone":    "Europe/Berlin",
+     "timezone":    "America/Sao_Paulo",
      "attributes": [
        { "object_id": "c", "name": "count", "type": "Integer" }
      ]
@@ -197,19 +197,14 @@ curl -X GET \
     "id": "urn:ngsi-ld:Motion:001",
     "type": "Motion",
     "TimeInstant": {
-        "type": "ISO8601",
-        "value": "2018-05-25T10:51:32.00Z",
+        "type": "DateTime",
+        "value": "2019-06-26T15:15:27.00Z",
         "metadata": {}
     },
     "count": {
         "type": "Integer",
-        "value": "1",
-        "metadata": {
-            "TimeInstant": {
-                "type": "ISO8601",
-                "value": "2018-05-25T10:51:32.646Z"
-            }
-        }
+        "value": " ",
+        "metadata": {}
     }
 }
 ```
@@ -327,11 +322,31 @@ curl -X GET \
 {
     "id": "urn:ngsi-ld:Bell:001",
     "type": "Bell",
-    "TimeInstant": "2018-05-25T20:06:28.00Z",
-    "refStore": "urn:ngsi-ld:Store:001",
-    "ring_info": " ring OK",
-    "ring_status": "OK",
-    "ring": ""
+    "TimeInstant": {
+        "type": "DateTime",
+        "value": "2019-06-26T15:29:52.00Z",
+        "metadata": {}
+    },
+    "ring_info": {
+        "type": "commandResult",
+        "value": " ",
+        "metadata": {}
+    },
+    "ring_status": {
+        "type": "commandStatus",
+        "value": "PENDING",
+        "metadata": {
+            "TimeInstant": {
+                "type": "DateTime",
+                "value": "2019-06-26T15:29:52.00Z"
+            }
+        }
+    },
+    "ring": {
+        "type": "command",
+        "value": "",
+        "metadata": {}
+    }
 }
 ```
 
