@@ -1,11 +1,6 @@
 This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to Helix. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of celphone IoT devices using MQTT via a [Mosquitto](https://mosquitto.org/) message broker
 
-#### Mosquitto MQTT Broker
-
-[Mosquitto](https://mosquitto.org/) is a readily available, open source MQTT broker which will be used during this
-tutorial. It is available licensed under EPL/EDL. More information can be found at `https://mosquitto.org/`
-
 # Architecture
 
 <img src="helixsandbox_v2_mqtt.jpg">
@@ -167,9 +162,6 @@ curl -iX POST \
      "timezone":    "Europe/Berlin",
      "attributes": [
        { "object_id": "c", "name": "count", "type": "Integer" }
-     ],
-     "static_attributes": [
-       { "name":"refStore", "type": "Relationship", "value": "urn:ngsi-ld:Store:001"}
      ]
    }
  ]
@@ -178,8 +170,7 @@ curl -iX POST \
 ```
 
 In the request we are associating the device `motion001` with the URN `urn:ngsi-ld:Motion:001` and mapping the device
-reading `c` with the context attribute `count` (which is defined as an `Integer`) A `refStore` is defined as a
-`static_attribute`, placing the device within **Store** `urn:ngsi-ld:Store:001`.
+reading `c` with the context attribute `count` (which is defined as an `Integer`). 
 
 The addition of the `transport=MQTT` attribute in the body of the request is sufficient to tell the IoT Agent that it
 should subscribe to the `/<api-key>/<device-id>` **topic** to receive measurements.
@@ -187,42 +178,10 @@ should subscribe to the `/<api-key>/<device-id>` **topic** to receive measuremen
 You can simulate a dummy IoT device measurement coming from the **Motion Sensor** device `motion001`, by posting an MQTT
 message to the following **topic**
 
-#### :four: MQTT Request:
-
-```console
-docker run -it --rm --name mqtt-publisher --network \
-  fiware_default efrecon/mqtt-client pub -h mosquitto -m "c|1" \
-  -t "/iot/motion001/attrs"
-```
-
--   The value of the `-m` parameter defines the message. This is in UltraLight syntax.
--   The value of the `-t` parameter defines the **topic**.
-
-The **topic** must be in the following form:
-
-```
-/<api-key>/<device-id>/attrs
-```
-
-> **Note** In the [previous tutorial](https://github.com/FIWARE/tutorials.IoT-Agent), when testing HTTP connectivity
-> between the Motion Sensor and an IoT Agent, a similar dummy HTTP request was sent to update the `count` value. This
-> time the IoT Agent is configured to listen to MQTT topics, and we need to post a dummy message to an MQTT topic.
-
-When running using the MQTT transport protocol, the IoT Agent is subscribing to the MQTT **topics** and the device
-monitor will be configured to display all MQTT **messages** sent to each **topic** - effectively it is showing the list
-messages received and sent by Mosquitto.
-
-With the IoT Agent connected via MQTT, the service group has defined the **topic** which the agent is subscribed to.
-Since the api-key matches the root of the **topic**, the MQTT message from the **Motion Sensor** is passed to the IoT
-Agent which has previously subscribed.
-
-Because we have specifically provisioned the device (`motion001`) - the IoT Agent is able to map attributes before
-raising a request with the Orion Context Broker.
-
 You can see that a measurement has been recorded, by retrieving the entity data from the context broker. Don't forget to
 add the `fiware-service` and `fiware-service-path` headers.
 
-#### :five: Request:
+#### :four: Request:
 
 ```console
 curl -X GET \
@@ -271,7 +230,7 @@ device is listening for commands. The array of commands is mapped to directly to
 
 The example below provisions a bell with the `deviceId=bell001`.
 
-#### :six: Request:
+#### :five: Request:
 
 ```console
 curl -iX POST \
@@ -289,10 +248,7 @@ curl -iX POST \
       "transport": "MQTT",
       "commands": [
         { "name": "ring", "type": "command" }
-       ],
-       "static_attributes": [
-         {"name":"refStore", "type": "Relationship","value": "urn:ngsi-ld:Store:001"}
-      ]
+       ]
     }
   ]
 }
@@ -304,7 +260,7 @@ REST request directly to the IoT Agent's North Port using the `/v1/updateContext
 will eventually be invoked by the context broker once we have connected it up. To test the configuration you can run the
 command directly as shown:
 
-#### :seven: Request:
+#### :six: Request:
 
 ```console
 curl -iX POST \
@@ -320,9 +276,6 @@ curl -iX POST \
             "id": "urn:ngsi-ld:Bell:001",
             "attributes": [
                 { "name": "ring", "type": "command", "value": "" }
-            ],
-            "static_attributes": [
-               {"name":"refStore", "type": "Relationship","value": "urn:ngsi-ld:Store:001"}
             ]
         }
     ],
@@ -357,13 +310,9 @@ curl -iX POST \
 }
 ```
 
-If you are viewing the device monitor page, you can also see the state of the bell change.
-
-![](https://fiware.github.io/tutorials.IoT-over-MQTT/img/bell-ring.gif)
-
 The result of the command to ring the bell can be read by querying the entity within the Orion Context Broker.
 
-#### :eight: Request:
+#### :seven: Request:
 
 ```console
 curl -X GET \
@@ -396,7 +345,7 @@ both `attributes` and `command` attributes in the body of the request. Once agai
 the communications protocol to be used, and no `endpoint` attribute is required as there is no HTTP URL where the device
 is listening for commands.
 
-#### :nine: Request:
+#### :eight: Request:
 
 ```console
 curl -iX POST \
@@ -420,9 +369,6 @@ curl -iX POST \
        ],
        "attributes": [
         {"object_id": "s", "name": "state", "type":"Text"}
-       ],
-       "static_attributes": [
-         {"name":"refStore", "type": "Relationship","value": "urn:ngsi-ld:Store:001"}
        ]
     }
   ]
@@ -434,7 +380,7 @@ curl -iX POST \
 
 Similarly, a **Smart Lamp** with two commands (`on` and `off`) and two attributes can be provisioned as follows:
 
-#### :one::zero: Request:
+#### :nine: Request:
 
 ```console
 curl -iX POST \
@@ -457,10 +403,7 @@ curl -iX POST \
        "attributes": [
         {"object_id": "s", "name": "state", "type":"Text"},
         {"object_id": "l", "name": "luminosity", "type":"Integer"}
-       ],
-       "static_attributes": [
-         {"name":"refStore", "type": "Relationship","value": "urn:ngsi-ld:Store:001"}
-      ]
+       ]
     }
   ]
 }
@@ -469,7 +412,7 @@ curl -iX POST \
 
 The full list of provisioned devices can be obtained by making a GET request to the `/iot/devices` endpoint.
 
-#### :one::one: Request:
+#### :one::zero: Request:
 
 ```console
 curl -X GET \
@@ -502,7 +445,7 @@ we need to inform Orion that the URL `http://orion:1026/v1` is able to provide t
 then be forwarded on to the IoT Agent. As you see this is an NGSI v1 endpoint and therefore the `legacyForwarding`
 attribute must also be set.
 
-#### :one::two: Request:
+#### :one::one: Request:
 
 ```console
 curl -iX POST \
@@ -531,7 +474,7 @@ curl -iX POST \
 
 To invoke the `ring` command, the `ring` attribute must be updated in the context.
 
-#### :one::three: Request:
+#### :one::two: Request:
 
 ```console
 curl -iX PATCH \
@@ -558,7 +501,7 @@ commands we need to inform Orion that the URL `http://orion:1026/v1` is able to 
 will then be forwarded on to the IoT Agent. As you see this is an NGSI v1 endpoint and therefore the `legacyForwarding`
 attribute must also be set.
 
-#### :one::four: Request:
+#### :one::three: Request:
 
 ```console
 curl -iX POST \
@@ -587,7 +530,7 @@ curl -iX POST \
 
 To invoke the `open` command, the `open` attribute must be updated in the context.
 
-#### :one::five: Request:
+#### :one::four: Request:
 
 ```console
 curl -iX PATCH \
@@ -610,7 +553,7 @@ commands we need to inform Orion that the URL `http://orion:1026/v1` is able to 
 will then be forwarded on to the IoT Agent. As you see this is an NGSI v1 endpoint and therefore the `legacyForwarding`
 attribute must also be set.
 
-#### :one::six: Request:
+#### :one::five: Request:
 
 ```console
 curl -iX POST \
@@ -639,7 +582,7 @@ curl -iX POST \
 
 To switch on the **Smart Lamp**, the `on` attribute must be updated in the context.
 
-#### :one::seven: Request:
+#### :one::six: Request:
 
 ```console
 curl -iX PATCH \
@@ -654,13 +597,6 @@ curl -iX PATCH \
   }
 }'
 ```
-
-# Next Steps
-
-Want to learn how to add more complexity to your application by adding advanced features? You can find out by reading
-the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
-
----
 
 ## License
 
