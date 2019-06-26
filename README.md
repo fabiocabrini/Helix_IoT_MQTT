@@ -1,23 +1,5 @@
-[![FIWARE Banner](https://fiware.github.io/tutorials.IoT-over-MQTT/img/fiware.png)](https://www.fiware.org/developers)
-
-[![FIWARE IoT Agents](https://nexus.lab.fiware.org/repository/raw/public/badges/chapters/iot-agents.svg)](https://github.com/FIWARE/catalogue/blob/master/iot-agents/README.md)
-[![License: MIT](https://img.shields.io/github/license/fiware/tutorials.IoT-over-MQTT.svg)](https://opensource.org/licenses/MIT)
-[![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/fiware.svg)](https://stackoverflow.com/questions/tagged/fiware)
-[![NGSI v2](https://img.shields.io/badge/NGSI-v2-blue.svg)](https://fiware-ges.github.io/core.Orion/api/v2/stable/)
-[![UltraLight 2.0](https://img.shields.io/badge/Ultralight-2.0-5dc0cf.svg)](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
-<br/> [![Documentation](https://img.shields.io/readthedocs/fiware-tutorials.svg)](https://fiware-tutorials.rtfd.io)
-
-This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to FIWARE. The
-[UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual) IoT
-Agent created in the [previous tutorial](https://github.com/FIWARE/tutorials.IoT-Agent) is reconfigured to communicate
-with a set of dummy IoT devices using MQTT via a [Mosquitto](https://mosquitto.org/) message broker
-
-The tutorial uses [cUrl](https://ec.haxx.se/) commands throughout, but is also available as
-[Postman documentation](https://fiware.github.io/tutorials.IoT-Agent/)
-
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/acfd27a941ed57a0cae5)
-
--   このチュートリアルは[日本語](README.ja.md)でもご覧いただけます。
+This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to Helix. The
+UltraLight 2.0 IoT Agent is configured to communicate with a set of celphone IoT devices using MQTT via a [Mosquitto](https://mosquitto.org/) message broker
 
 ## Contents
 
@@ -69,7 +51,7 @@ protocol, and is designed for connections with remote locations where a "small c
 network bandwidth is limited. The goal is to provide a protocol, which is bandwidth-efficient and uses little battery
 power.
 
-The [previous tutorial](https://github.com/FIWARE/tutorials.IoT-Agent) used HTTP as its transport mechanism between the
+The [FIWARE tutorial](https://github.com/FIWARE/tutorials.IoT-Agent) used HTTP as its transport mechanism between the
 devices and the IoT Agent. HTTP uses a request/response paradigm where each device connects directly to the IoT Agent.
 MQTT is different in that publish-subscribe is event-driven and pushes messages to clients. It requires an additional
 central communication point (known as the MQTT broker) which it is in charge of dispatching all messages between the
@@ -187,44 +169,6 @@ increase the debug level of the MQTT Message Broker.
 
 ## Dummy IoT Devices Configuration
 
-```yaml
-tutorial:
-    image: fiware/tutorials.context-provider
-    hostname: iot-sensors
-    container_name: fiware-tutorial
-    networks:
-        - default
-    expose:
-        - "3000"
-        - "3001"
-    ports:
-        - "3000:3000"
-        - "3001:3001"
-    environment:
-        - "DEBUG=tutorial:*"
-        - "WEB_APP_PORT=3000"
-        - "DUMMY_DEVICES_PORT=3001"
-        - "DUMMY_DEVICES_API_KEY=4jggokgpepnvsb2uv4s40d59ov"
-        - "DUMMY_DEVICES_TRANSPORT=MQTT"
-```
-
-The `tutorial` container is listening on two ports:
-
--   Port `3000` is exposed so we can see the web page displaying the Dummy IoT devices.
--   Port `3001` is exposed purely for tutorial access - so that cUrl or Postman can make UltraLight commands without
-    being part of the same network.
-
-The `tutorial` container is driven by environment variables as shown:
-
-| Key                     | Value                        | Description                                                                                                                               |
-| ----------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| DEBUG                   | `tutorial:*`                 | Debug flag used for logging                                                                                                               |
-| WEB_APP_PORT            | `3000`                       | Port used by web-app which displays the dummy device data                                                                                 |
-| DUMMY_DEVICES_PORT      | `3001`                       | Port used by the dummy IoT devices to receive commands                                                                                    |
-| DUMMY_DEVICES_API_KEY   | `4jggokgpepnvsb2uv4s40d59ov` | Random security key used for UltraLight interactions - used to ensure the integrity of interactions between the devices and the IoT Agent |
-| DUMMY_DEVICES_TRANSPORT | `MQTT`                       | The transport protocol used by the dummy IoT devices                                                                                      |
-
-The other `tutorial` container configuration values described in the YAML file are not used in this tutorial.
 
 ## IoT Agent for UltraLight 2.0 Configuration
 
@@ -353,10 +297,6 @@ repository:
 To follow the tutorial correctly please ensure you have the device monitor page available in your browser and click on
 the page to enable audio before you enter any cUrl commands. The device monitor displays the current state of an array
 of dummy devices using Ultralight 2.0 syntax
-
-#### Device Monitor
-
-The device monitor can be found at: `http://localhost:3000/device/monitor`
 
 ## Checking Mosquitto Health
 
@@ -519,7 +459,7 @@ It is possible to set up default commands and attributes for all devices as well
 tutorial as we will be provisioning each device separately.
 
 This example provisions an anonymous group of devices. It tells the IoT Agent that a series of devices will be
-communicating by sending messages to the `/4jggokgpepnvsb2uv4s40d59ov` **topic**
+communicating by sending messages to the `/iot` **topic**
 
 The `resource` attribute is left blank since HTTP communication is not being used. The URL location of `cbroker` is an
 optional attribute - if it is not provided, the IoT Agent uses the default context broker URL as defined in the
@@ -531,12 +471,12 @@ configuration file, however it has been added here for completeness.
 curl -iX POST \
   'http://localhost:4041/iot/services' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
  "services": [
    {
-     "apikey":      "4jggokgpepnvsb2uv4s40d59ov",
+     "apikey":      "iot",
      "cbroker":     "http://orion:1026",
      "entity_type": "Thing",
      "resource":    ""
@@ -568,7 +508,7 @@ Three types of measurement attributes can be provisioned:
 curl -iX POST \
   'http://localhost:4041/iot/devices' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
  "devices": [
@@ -606,7 +546,7 @@ message to the following **topic**
 ```console
 docker run -it --rm --name mqtt-publisher --network \
   fiware_default efrecon/mqtt-client pub -h mosquitto -m "c|1" \
-  -t "/4jggokgpepnvsb2uv4s40d59ov/motion001/attrs"
+  -t "/iot/motion001/attrs"
 ```
 
 -   The value of the `-m` parameter defines the message. This is in UltraLight syntax.
@@ -641,7 +581,7 @@ add the `fiware-service` and `fiware-service-path` headers.
 ```console
 curl -X GET \
   'http://localhost:1026/v2/entities/urn:ngsi-ld:Motion:001?type=Motion' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /'
 ```
 
@@ -691,7 +631,7 @@ The example below provisions a bell with the `deviceId=bell001`.
 curl -iX POST \
   'http://localhost:4041/iot/devices' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "devices": [
@@ -724,7 +664,7 @@ command directly as shown:
 curl -iX POST \
   'http://localhost:4041/v1/updateContext' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
     "contextElements": [
@@ -782,7 +722,7 @@ The result of the command to ring the bell can be read by querying the entity wi
 ```console
 curl -X GET \
   'http://localhost:1026/v2/entities/urn:ngsi-ld:Bell:001?type=Bell&options=keyValues' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /'
 ```
 
@@ -816,7 +756,7 @@ is listening for commands.
 curl -iX POST \
   'http://localhost:4041/iot/devices' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "devices": [
@@ -854,7 +794,7 @@ Similarly, a **Smart Lamp** with two commands (`on` and `off`) and two attribute
 curl -iX POST \
   'http://localhost:4041/iot/devices' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "devices": [
@@ -888,7 +828,7 @@ The full list of provisioned devices can be obtained by making a GET request to 
 ```console
 curl -X GET \
   'http://localhost:4041/iot/devices' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /'
 ```
 
@@ -922,7 +862,7 @@ attribute must also be set.
 curl -iX POST \
   'http://localhost:1026/v2/registrations' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "description": "Bell Commands",
@@ -951,7 +891,7 @@ To invoke the `ring` command, the `ring` attribute must be updated in the contex
 curl -iX PATCH \
   'http://localhost:1026/v2/entities/urn:ngsi-ld:Bell:001/attrs' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "ring": {
@@ -978,7 +918,7 @@ attribute must also be set.
 curl -iX POST \
   'http://localhost:1026/v2/registrations' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "description": "Door Commands",
@@ -1007,7 +947,7 @@ To invoke the `open` command, the `open` attribute must be updated in the contex
 curl -iX PATCH \
   'http://localhost:1026/v2/entities/urn:ngsi-ld:Lamp:001/attrs' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "open": {
@@ -1030,7 +970,7 @@ attribute must also be set.
 curl -iX POST \
   'http://localhost:1026/v2/registrations' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "description": "Lamp Commands",
@@ -1059,7 +999,7 @@ To switch on the **Smart Lamp**, the `on` attribute must be updated in the conte
 curl -iX PATCH \
   'http://localhost:1026/v2/entities/urn:ngsi-ld:Lamp:001/attrs' \
   -H 'Content-Type: application/json' \
-  -H 'fiware-service: openiot' \
+  -H 'fiware-service: helixiot' \
   -H 'fiware-servicepath: /' \
   -d '{
   "on": {
@@ -1078,4 +1018,3 @@ the other [tutorials in this series](https://fiware-tutorials.rtfd.io)
 
 ## License
 
-[MIT](LICENSE) © 2018-2019 FIWARE Foundation e.V.
