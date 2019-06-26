@@ -7,6 +7,10 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone I
 
 # Prerequisites
 
+## Servers
+
+You'll need two instances and two public IPs to create this scenario by having the Helix Sandbox running on the CSP (Cloud Service Provider) and Helix IoT on the Raspberry/PC or you can create both on a local scenario.
+
 ## Docker and Docker Compose
 
 To keep things simple all components will be run using [Docker](https://www.docker.com). **Docker** is a container
