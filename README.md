@@ -81,15 +81,6 @@ able to use the same FIWARE generic enabler to connect to a wider range of IoT d
 [Mosquitto](https://mosquitto.org/) is a readily available, open source MQTT broker which will be used during this
 tutorial. It is available licensed under EPL/EDL. More information can be found at `https://mosquitto.org/`
 
-#### Device Monitor
-
-For the purpose of this tutorial, a series of dummy IoT devices have been created, which will be attached to the context
-broker. Details of the architecture and protocol used can be found in the
-[IoT Sensors tutorial](https://github.com/FIWARE/tutorials.IoT-Sensors) The state of each device can be seen on the
-UltraLight device monitor web page found at: `http://localhost:3000/device/monitor`
-
-![FIWARE Monitor](https://fiware.github.io/tutorials.IoT-over-MQTT/img/device-monitor.png)
-
 # Architecture
 
 This application builds on the components created in
