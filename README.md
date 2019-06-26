@@ -114,20 +114,9 @@ Therefore the overall architecture will consist of the following elements:
 -   A webserver acting as set of [dummy IoT devices](https://github.com/FIWARE/tutorials.IoT-Sensors) using the
     [UltraLight 2.0](https://fiware-iotagent-ul.readthedocs.io/en/latest/usermanual/index.html#user-programmers-manual)
     protocol running over MQTT.
--   The **Context Provider NGSI** proxy is not used in this tutorial. It does the following:
-    -   receive requests using [NGSI](https://fiware.github.io/specifications/OpenAPI/ngsiv2)
-    -   makes requests to publicly available data sources using their own APIs in a proprietary format
-    -   returns context data back to the Orion Context Broker in
-        [NGSI](https://fiware.github.io/specifications/OpenAPI/ngsiv2) format.
--   The **Stock Management Frontend** is not used in this tutorial will it does the following:
-    -   Display store information
-    -   Show which products can be bought at each store
-    -   Allow users to "buy" products and reduce the stock count.
 
 Since all interactions between the elements are initiated by HTTP or MQTT requests over TCP, the entities can be
 containerized and run from exposed ports.
-
-![](https://fiware.github.io/tutorials.IoT-over-MQTT/img/architecture.png)
 
 The necessary configuration information for wiring up the Mosquitto MQTT Broker, the IoT devices and the IoT Agent can
 be seen in the services section of the associated `docker-compose.yml` file:
@@ -254,19 +243,14 @@ docker version
 Please ensure that you are using Docker version 18.03 or higher and Docker Compose 1.21 or higher and upgrade if
 necessary.
 
-## Cygwin for Windows
-
-We will start up our services using a simple Bash script. Windows users should download [cygwin](http://www.cygwin.com/)
-to provide a command-line functionality similar to a Linux distribution on Windows.
-
 # Start Up
 
 Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
 repository and create the necessary images by running the commands as shown:
 
 ```console
-git clone git@github.com:FIWARE/tutorials.IoT-over-MQTT.git
-cd tutorials.IoT-over-MQTT
+git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
+cd Helix_IoT_MQTT
 
 ./services create
 ```
