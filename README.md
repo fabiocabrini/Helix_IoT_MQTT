@@ -83,6 +83,8 @@ tutorial. It is available licensed under EPL/EDL. More information can be found 
 
 # Architecture
 
+<img src="helixsandbox_v2_mqtt.jpg">
+
 This application builds on the components created in
 [previous tutorials](https://github.com/FIWARE/tutorials.IoT-Agent/). It will make use of two FIWARE components - the
 [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/) and the
