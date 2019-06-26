@@ -615,4 +615,4 @@ curl -iX PATCH \
 
 ## Reference
 
-This tutorial is an adaptation of [Fiware](https://github.com/FIWARE/tutorials.IoT-over-MQTT)
+This tutorial is adapted from [Fiware Foundation](https://github.com/FIWARE/tutorials.IoT-over-MQTT)
