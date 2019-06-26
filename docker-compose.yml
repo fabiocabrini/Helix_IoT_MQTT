@@ -30,7 +30,7 @@ services:
     ports:
       - "4041:4041"
     environment:
-      - IOTA_CB_HOST=orion # name of the context broker to update context
+      - IOTA_CB_HOST=<HELIX_SANDBOX_IP> # Put Helix Sandbox IP here
       - IOTA_CB_PORT=1026 # port the context broker listens on to update context
       - IOTA_NORTH_PORT=4041
       - IOTA_REGISTRY_TYPE=mongodb #Whether to hold IoT device info in memory or in a database
@@ -44,9 +44,9 @@ services:
       - IOTA_MQTT_HOST=mosquitto # The host name of the MQTT Broker
       - IOTA_MQTT_PORT=1883 # The port the MQTT Broker is listening on to receive topics
   #   - IOTA_DEFAULT_RESOURCE=
-      - IOTA_PROVIDER_URL=http://iot-agent:4041
+      - IOTA_PROVIDER_URL=http://<HELIX_IoT_IP>:4041 #Put Helix IoT IP here
     healthcheck:
-      test: curl --fail -s http://iot_agent:4041/iot/about || exit 1
+      test: curl --fail -s http://<HELIX_IoT_IP>:4041/iot/about || exit 1 #Put Helix IoT IP here
 
   # Database
   mongo-db:
