@@ -1,5 +1,5 @@
-This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to Helix. The
-UltraLight 2.0 IoT Agent is configured to communicate with a set of celphone IoT devices using MQTT via a [Mosquitto](https://mosquitto.org/) message broker
+This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
+UltraLight 2.0 IoT Agent is configured to communicate with a set of celphone IoT devices using MQTT via a [Mosquitto](https://mosquitto.org/) message broker.
 
 # Architecture
 
@@ -12,8 +12,6 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of celphone IoT
 To keep things simple all components will be run using [Docker](https://www.docker.com). **Docker** is a container
 technology which allows to different components isolated into their respective environments.
 
--   To install Docker on Windows follow the instructions [here](https://docs.docker.com/docker-for-windows/)
--   To install Docker on Mac follow the instructions [here](https://docs.docker.com/docker-for-mac/)
 -   To install Docker on Linux follow the instructions [here](https://docs.docker.com/install/)
 
 **Docker Compose** is a tool for defining and running multi-container Docker applications. A
@@ -65,7 +63,6 @@ The response will look similar to the following:
     "version": "1.6.0-next"
 }
 ```
-
 
 
 ## Connecting IoT Devices
