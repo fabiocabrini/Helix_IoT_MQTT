@@ -44,9 +44,9 @@ services:
       - IOTA_MQTT_HOST=mosquitto # The host name of the MQTT Broker
       - IOTA_MQTT_PORT=1883 # The port the MQTT Broker is listening on to receive topics
   #   - IOTA_DEFAULT_RESOURCE=
-      - IOTA_PROVIDER_URL=http://<HELIX_IoT_IP>:4041 #Put Helix IoT IP here
+      - IOTA_PROVIDER_URL=http://<HELIX_IOT_IP>:4041 #Put Helix IoT IP here
     healthcheck:
-      test: curl --fail -s http://<HELIX_IoT_IP>:4041/iot/about || exit 1 #Put Helix IoT IP here
+      test: curl --fail -s http://<HELIX_IOT_IP>:4041/iot/about || exit 1 #Put Helix IoT IP here
 
   # Database
   mongo-db:
