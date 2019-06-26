@@ -612,5 +612,5 @@ curl -iX PATCH \
 }'
 ```
 
-## License
-
+## Reference
+This tutorial is an adaptation of [Fiware](https://github.com/FIWARE/tutorials.IoT-over-MQTT)
