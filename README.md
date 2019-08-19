@@ -33,9 +33,7 @@ Automated installation process X86 architecture only (Let us help you with this!
 run ./install.sh
 ```
 
-## Docker and Docker Compose
-
-Manual installation process
+Manual installation process X86 architecture only
 
 Container engine installation:
 
@@ -52,6 +50,11 @@ docker version
 
 Please ensure that you are using Docker version 18.03 or higher and Docker Compose 1.21 or higher and upgrade if
 necessary.
+
+Install Docker on Raspberry Raspbian
+
+<a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
+
 
 # Start Up
 
