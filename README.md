@@ -25,6 +25,7 @@ Automated installation process X86 architecture only (Let us help you with this!
 
 ```
 run ./install.sh
+
 choose the 2nd option!
 ```
 
@@ -36,16 +37,6 @@ Container engine installation:
 
 <a href="https://docs.docker.com/compose/install/#install-compose">docker-compose</a>
 
-You can check your current **Docker** and **Docker Compose** versions using the following commands:
-
-```console
-docker-compose -v
-docker version
-```
-
-Please ensure that you are using Docker version 18.03 or higher and Docker Compose 1.21 or higher and upgrade if
-necessary.
-
 Install Docker on Raspberry Raspbian
 
 <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
@@ -56,7 +47,7 @@ Install Docker on Raspberry Raspbian
 Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
 repository and create the necessary images by running the commands as shown:
 
-```console
+```
 git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
 
 cd Helix_IoT_MQTT
