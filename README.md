@@ -58,10 +58,12 @@ repository and create the necessary images by running the commands as shown:
 
 ```console
 git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
+
 cd Helix_IoT_MQTT
 
-sudo docker-compose up -d
+sudo docker-compose up -d or use ./install.sh (automated installation process)
 ```
+
 ## Postman Collection
 
 Click [here](https://github.com/fabiocabrini/helix-IoT-MQTT/blob/master/Helix%20IoT%20over%20MQTT%20Tutorial.postman_collection.json)
