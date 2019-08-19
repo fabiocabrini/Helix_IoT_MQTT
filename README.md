@@ -61,7 +61,9 @@ git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
 
 cd Helix_IoT_MQTT
 
-sudo docker-compose up -d or use ./install.sh (automated installation process)
+You must change the IP address into the docker-compose.yaml
+
+sudo docker-compose up -d 
 ```
 
 ## Postman Collection
