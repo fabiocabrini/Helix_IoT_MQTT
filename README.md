@@ -5,12 +5,6 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone I
 
 <img src="helixsandbox_v2_mqtt.jpg">
 
-# Prerequisites
-
-## Servers
-
-You'll need two instances and two public IPs to create this scenario by having the Helix Sandbox running on the CSP (Cloud Service Provider) and Helix IoT on the Raspberry/PC or you can create both on a local scenario.
-
 ## Requirements before Helix IoT MQTT installation
 
 Use any local hypervisor like Virtual Box, VMware and KVM or if you need a global internet access we suggest any Cloud Service Provicer (CSP) like AWS, Azure or Google. 
