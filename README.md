@@ -11,18 +11,37 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone I
 
 You'll need two instances and two public IPs to create this scenario by having the Helix Sandbox running on the CSP (Cloud Service Provider) and Helix IoT on the Raspberry/PC or you can create both on a local scenario.
 
+## Requirements before Helix IoT MQTT installation
+
+Use any local hypervisor like Virtual Box, VMware and KVM or if you need a global internet access we suggest any Cloud Service Provicer (CSP) like AWS, Azure or Google. 
+
+Minimum server configuration: 1 vCPU, 1GB RAM and 16GB HDD or SSD.
+
+Install any Linux distribution, but Ubuntu Server 18.04 LTS and rasbian have been validated exhaustively for us.
+
+Open ports if you using a CSP:
+
+```
+22/TCP - SSH 
+1883/TCP - Mosquitto Broker MQTT
+4041/TCP - IoT Agent
+```
+
+Automated installation process X86 architecture only (Let us help you with this!)
+
+```
+run ./install.sh
+```
+
 ## Docker and Docker Compose
 
-To keep things simple all components will be run using [Docker](https://www.docker.com). **Docker** is a container
-technology which allows to different components isolated into their respective environments.
+Manual installation process
 
--   To install Docker on Linux follow the instructions [here](https://docs.docker.com/install/)
+Container engine installation:
 
-**Docker Compose** is a tool for defining and running multi-container Docker applications. A
-[YAML file](https://raw.githubusercontent.com/Fiware/tutorials.IoT-over-MQTT/master/docker-compose.yml) is used
-configure the required services for the application. This means all container services can be brought up in a single
-command. Docker Compose is installed by default as part of Docker for Windows and Docker for Mac, however Linux users
-will need to follow the instructions found [here](https://docs.docker.com/compose/install/)
+<a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">docker</a>
+
+<a href="https://docs.docker.com/compose/install/#install-compose">docker-compose</a>
 
 You can check your current **Docker** and **Docker Compose** versions using the following commands:
 
