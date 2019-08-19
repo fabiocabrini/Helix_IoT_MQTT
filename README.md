@@ -31,6 +31,7 @@ Automated installation process X86 architecture only (Let us help you with this!
 
 ```
 run ./install.sh
+choose the 2nd option!
 ```
 
 Manual installation process X86 architecture only
