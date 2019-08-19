@@ -1,4 +1,4 @@
-This tutorial uses introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
+This tutorial introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone IoT devices from [IoT MQTT Panel](https://play.google.com/store/apps/details?id=snr.lab.iotmqttpanel.prod&hl=pt_BR) using MQTT via a [Mosquitto](https://mosquitto.org/) message broker.
 
 # Architecture
