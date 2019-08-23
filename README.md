@@ -27,7 +27,7 @@ Open ports on the firewall if you are using a CSP:
 
 ```
 
-### Automated installation for x86 only (Let us help you with that!)
+### Automated install for x86 only (Let us help you with that!)
 
 ```
 
