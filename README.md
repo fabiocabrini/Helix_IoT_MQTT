@@ -25,7 +25,7 @@ Open ports if you using a CSP:
 4041/TCP - IoT Agent MQTT
 ```
 
-Automated installation process X86 architecture only (Let us help you with this!)
+### Automated installation process X86 architecture only (Let us help you with this!)
 
 ```
 
@@ -41,7 +41,7 @@ choose the 2nd option!
 
 ```
 
-Manual installation process X86 architecture only
+### Manual installation for x86 architecture
 
 Container engine installation:
 
@@ -49,25 +49,9 @@ Container engine installation:
 
 <a href="https://docs.docker.com/compose/install/#install-compose">docker-compose</a>
 
-Install Docker on Raspberry Raspbian
+### Install Docker on Raspberry Raspbian
 
 <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
-
-
-## Startup
-
-Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
-repository and create the necessary images by running the commands as shown:
-
-```
-git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
-
-cd Helix_IoT_MQTT
-
-You must change the IP address into the docker-compose.yaml
-
-sudo docker-compose up -d 
-```
 
 ## Postman Collection
 
