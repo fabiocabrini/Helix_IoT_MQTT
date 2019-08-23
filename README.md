@@ -11,7 +11,7 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone I
 
 ## Requirements & installation
 
-Use any local hypervisor like Virtual Box, VMware and KVM or if you need a global internet access we suggest any Cloud Service Provicer (CSP) like AWS, Azure or Google. 
+Use any local hypervisor like Virtual Box, VMware and KVM or if you need a global internet access we suggest any Cloud Service Provider (CSP) like AWS, Azure or Google. 
 
 Minimum server configuration: 1 vCPU, 1GB RAM and 16GB HDD or SSD.
 
