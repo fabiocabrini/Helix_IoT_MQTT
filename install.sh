@@ -23,7 +23,7 @@ echo "Installing Docker Engine and Docker compose."
 # Install prerequisites
 sudo apt-get -y update
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
-sudo apt-get -y instal sed
+sudo apt-get -y install sed
 
 # Add docker's package signing key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
