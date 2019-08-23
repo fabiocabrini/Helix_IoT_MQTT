@@ -53,6 +53,18 @@ Container engine installation:
 
 <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
 
+```
+
+git clone https://github.com/fabiocabrini/helix-IoT-MQTT.git
+
+cd helix-IoT-MQTT
+
+update Helix Sandbox and Helix IoT MQTT IP into docker-compose.yml
+
+sudo docker-compose up -d
+
+```
+
 ## Postman Collection
 
 Click [here](https://github.com/fabiocabrini/helix-IoT-MQTT/blob/master/Helix%20IoT%20over%20MQTT%20Tutorial.postman_collection.json)
