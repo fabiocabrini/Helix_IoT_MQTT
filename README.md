@@ -2,7 +2,7 @@
 
 ## About
 
-This tutorial introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
+The Helix IoT MQTT is a modular component that enables IoT devices based on MQTT protocol to transmit data to the  Helix Sandbox. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone IoT devices from [IoT MQTT Panel](https://play.google.com/store/apps/details?id=snr.lab.iotmqttpanel.prod&hl=pt_BR) using [Eclipse Mosquitto™](https://mosquitto.org/) an open source MQTT message broker.
 
 ## Inside
@@ -63,11 +63,11 @@ sudo docker-compose up -d
 
 ```
 
-## Postman Collection with all message from this tutorial
+## Postman Collection with all messages from this tutorial
 
 Click [here](https://github.com/fabiocabrini/helix-IoT-MQTT/blob/master/Helix%20IoT%20over%20MQTT%20Tutorial.postman_collection.json)
 
-## Checking the IoT Agent Service Health
+## Checking the IoT Agent Health
 
 You can check if the IoT Agent is running by making an HTTP request to the exposed port:
 
