@@ -23,6 +23,7 @@ echo "Installing Docker Engine and Docker compose."
 # Install prerequisites
 sudo apt-get -y update
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+sudo apt-get -y instal sed
 
 # Add docker's package signing key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -81,8 +82,7 @@ else
   sudo mkdir -p /opt/secrets
   sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt "/C=BR /ST=SP /L=SP /O=Personal /OU=Personal /CN=Helix"
 
-  git clone https://github.com/fabiocabrini/helix-sandbox.git
-  cd helix-sandbox/compose
+  cd compose
   echo "put_here_your_encryption_key" > secrets/aes_key.txt
   sudo docker-compose up -d
 fi
