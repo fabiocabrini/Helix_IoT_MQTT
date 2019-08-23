@@ -17,12 +17,14 @@ Minimum server configuration: 1 vCPU, 1GB RAM and 16GB HDD or SSD.
 
 Install any Linux distribution, but Ubuntu Server 18.04 LTS and rasbian have been validated exhaustively for us.
 
-Open ports if you using a CSP:
+Open ports on firewall if you using a CSP:
 
 ```
+
 22/TCP - SSH 
 1883/TCP - Mosquitto Broker MQTT
 4041/TCP - IoT Agent MQTT
+
 ```
 
 ### Automated installation process X86 architecture only (Let us help you with this!)
@@ -30,13 +32,9 @@ Open ports if you using a CSP:
 ```
 
 git clone https://github.com/fabiocabrini/helix-IoT-MQTT.git
-
 cd helix-IoT-MQTT
-
 chmod +x install.sh
-
 ./install.sh
-
 choose the 2nd option!
 
 ```
@@ -56,11 +54,9 @@ Container engine installation:
 ```
 
 git clone https://github.com/fabiocabrini/helix-IoT-MQTT.git
-
 cd helix-IoT-MQTT
-
-update Helix Sandbox and Helix IoT MQTT IP into docker-compose.yml
-
+#update Helix Sandbox and Helix IoT MQTT IP into docker-compose.yml
+vi docker-compose.yml
 sudo docker-compose up -d
 
 ```
