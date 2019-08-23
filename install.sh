@@ -55,14 +55,13 @@ then
   read MYIPlocal
   git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
   cd Helix_IoT_MQTT
+  chmod +x docker-compose.yml
   mv docker-compose.yml docker-compose-old.yml
   sed "s/<HELIX_SANDBOX_IP>/$MYIPlocal/g" docker-compose-old.yml > docker-compose-old2.yml
   sed "s/<HELIX_IOT_IP>/$MYIP/g" docker-compose-old2.yml > docker-compose.yml
   
   rm -rf docker-compose-old2.yml
   rm -rf docker-compose-old.yml
-  
-  chmod +x docker-compose.yml
 
   sudo docker-compose up -d
 
