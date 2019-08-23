@@ -5,7 +5,7 @@
 This tutorial introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone IoT devices from [IoT MQTT Panel](https://play.google.com/store/apps/details?id=snr.lab.iotmqttpanel.prod&hl=pt_BR) using [Eclipse Mosquitto™](https://mosquitto.org/) an open source MQTT message broker.
 
-# Inside
+## Inside
 
 <img src="helixsandbox_v2_mqtt.jpg">
 
@@ -54,7 +54,7 @@ Install Docker on Raspberry Raspbian
 <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
 
 
-# Start Up
+## Startup
 
 Before you start you should ensure that you have obtained or built the necessary Docker images locally. Please clone the
 repository and create the necessary images by running the commands as shown:
