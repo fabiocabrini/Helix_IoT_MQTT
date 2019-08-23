@@ -15,9 +15,9 @@ Use any local hypervisor like Virtual Box, VMware and KVM or if you need a globa
 
 Minimum server configuration: 1 vCPU, 1GB RAM and 16GB HDD or SSD.
 
-Install any Linux distribution, but Ubuntu Server 18.04 LTS and rasbian have been validated exhaustively for us.
+Install any Linux distribution, but Ubuntu Server 18.04 LTS and Raspbian have been thoroughly validated by us.
 
-Open ports on firewall if you using a CSP:
+Open ports on the firewall if you are using a CSP:
 
 ```
 
