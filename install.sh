@@ -7,7 +7,7 @@ echo "Welcome to Helix Sandbox Intallation, please chose between one of the foll
 
 echo
 
-echo "Type [1] for install Helix Sandbox with CoAP or type [2] for installing Helix IoT MQTT"
+echo "Type [1] for install helix with COaP or type [2] for installing Helix with MQTT"
 
 read type
 
@@ -44,30 +44,47 @@ sudo systemctl start docker
 
 echo "Docker Engine and Docker compose installed with success."
 
-echo "Pulling Docker Images"
-
-sudo docker pull mongo:3.4
-sudo docker pull fiware/orion:latest
-sudo docker pull fiware/cygnus-ngsi:1.9.0
-sudo docker pull m4n3dw0lf/dtls-lightweightm2m-iotagent
-
-echo "Images pulled with success"
-
-echo "Creating Keys"
-sudo mkdir -p /opt/secrets
-sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt "/C=BR /ST=SP /L=SP /O=Personal /OU=Personal /CN=Helix"
-
+# Installing Helix Sandbox with MQTT
 if [[ $type -eq 2 ]]
 then
-  echo "Installing Helix IoT MQTT"
+  echo "Installing Helix Sandbox with MQTT"
+  echo 'Enter the IP address of the server'
+  read MYIP
+  echo 'Enter local ip'
+  read MYIPlocal
   git clone https://github.com/fabiocabrini/Helix_IoT_MQTT.git
   cd Helix_IoT_MQTT
+  mv docker-compose.yml docker-compose-old.yml
+  sed "s/<HELIX_SANDBOX_IP>/$MYIPlocal/g" docker-compose-old.yml > docker-compose-old2.yml
+  sed "s/<HELIX_IOT_IP>/$MYIP/g" docker-compose-old2.yml > docker-compose.yml
+  
+  rm -rf docker-compose-old2.yml
+  rm -rf docker-compose-old.yml
+  
+  chmod +x docker-compose.yml
+
   sudo docker-compose up -d
+
 else
-  echo "Installing Helix Sandbox with CoAP"
+
+  echo "Installing Helix Sandbox with COaP"
+  echo "Pulling Docker Images"
+
+  sudo docker pull mongo:3.4
+  sudo docker pull fiware/orion:latest
+  sudo docker pull fiware/cygnus-ngsi:1.9.0
+  sudo docker pull m4n3dw0lf/dtls-lightweightm2m-iotagent
+
+  echo "Images pulled with success"
+
+  echo "Creating Keys"
+  sudo mkdir -p /opt/secrets
+  sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /opt/secrets/ssl_key -out /opt/secrets/ssl_crt "/C=BR /ST=SP /L=SP /O=Personal /OU=Personal /CN=Helix"
 
   git clone https://github.com/fabiocabrini/helix-sandbox.git
   cd helix-sandbox/compose
   echo "put_here_your_encryption_key" > secrets/aes_key.txt
   sudo docker-compose up -d
 fi
+
+echo "Helix installed with success"
