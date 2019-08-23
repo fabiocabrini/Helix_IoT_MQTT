@@ -27,7 +27,7 @@ Open ports on firewall if you using a CSP:
 
 ```
 
-### Automated installation process X86 architecture only (Let us help you with this!)
+### Automated installation for x86 only (Let us help you with that!)
 
 ```
 
@@ -39,7 +39,7 @@ choose the 2nd option!
 
 ```
 
-### Manual installation for x86 architecture
+### Install Docker on x86 architecture 
 
 Container engine installation:
 
@@ -47,9 +47,11 @@ Container engine installation:
 
 <a href="https://docs.docker.com/compose/install/#install-compose">docker-compose</a>
 
-### Install Docker on Raspberry Raspbian
+### Install Docker on Raspberry Raspbian 
 
 <a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
+
+### Manual installation (It is at your own risk!)
 
 ```
 
@@ -61,7 +63,7 @@ sudo docker-compose up -d
 
 ```
 
-## Postman Collection
+## Postman Collection with all message from this tutorial
 
 Click [here](https://github.com/fabiocabrini/helix-IoT-MQTT/blob/master/Helix%20IoT%20over%20MQTT%20Tutorial.postman_collection.json)
 
