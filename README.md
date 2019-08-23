@@ -2,7 +2,7 @@
 
 ## About
 
-The Helix IoT MQTT is a modular component that enables IoT devices based on MQTT protocol to transmit data to the  Helix Sandbox. The
+Helix IoT MQTT is a modular component that allows MQTT protocol-based IoT devices to transmit data to Helix Sandbox. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone IoT devices from [IoT MQTT Panel](https://play.google.com/store/apps/details?id=snr.lab.iotmqttpanel.prod&hl=pt_BR) using [Eclipse Mosquitto™](https://mosquitto.org/) an open source MQTT message broker.
 
 ## Inside
