@@ -1,4 +1,4 @@
-# Helix Sandbox
+# Helix IoT MQTT
 
 ## About
 
