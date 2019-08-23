@@ -1,3 +1,5 @@
+# Foreword
+
 This tutorial introduces the use of the MQTT protocol across IoT devices connecting to Helix Sandbox. The
 UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone IoT devices from [IoT MQTT Panel](https://play.google.com/store/apps/details?id=snr.lab.iotmqttpanel.prod&hl=pt_BR) using MQTT via a [Mosquitto](https://mosquitto.org/) message broker.
 
@@ -5,7 +7,7 @@ UltraLight 2.0 IoT Agent is configured to communicate with a set of cell phone I
 
 <img src="helixsandbox_v2_mqtt.jpg">
 
-## Requirements before Helix IoT MQTT installation
+## Requirements & installation
 
 Use any local hypervisor like Virtual Box, VMware and KVM or if you need a global internet access we suggest any Cloud Service Provicer (CSP) like AWS, Azure or Google. 
 
@@ -18,15 +20,23 @@ Open ports if you using a CSP:
 ```
 22/TCP - SSH 
 1883/TCP - Mosquitto Broker MQTT
-4041/TCP - IoT Agent
+4041/TCP - IoT Agent MQTT
 ```
 
 Automated installation process X86 architecture only (Let us help you with this!)
 
 ```
-run ./install.sh
+
+git clone https://github.com/fabiocabrini/helix-IoT-MQTT.git
+
+cd helix-IoT-MQTT
+
+chmod +x install.sh
+
+./install.sh
 
 choose the 2nd option!
+
 ```
 
 Manual installation process X86 architecture only
