@@ -7,7 +7,7 @@ echo "Welcome to Helix Sandbox Intallation, please chose between one of the foll
 
 echo
 
-echo "Type [1] for install helix with COaP or type [2] for installing Helix with MQTT"
+echo "Type [1] for install Helix Sandbox with CoAP or type [2] for installing Helix IoT MQTT"
 
 read type
 
@@ -45,10 +45,10 @@ sudo systemctl start docker
 
 echo "Docker Engine and Docker compose installed with success."
 
-# Installing Helix Sandbox with MQTT
+# Installing Helix Sandbox IoT MQTT
 if [[ $type -eq 2 ]]
 then
-  echo "Installing Helix Sandbox with MQTT"
+  echo "Installing Helix IoT MQTT"
   echo 'Enter the IP address of the server'
   read MYIP
   echo 'Enter local ip'
@@ -66,7 +66,7 @@ then
 
 else
 
-  echo "Installing Helix Sandbox with COaP"
+  echo "Installing Helix Sandbox with CoAP"
   echo "Pulling Docker Images"
 
   sudo docker pull mongo:3.4
@@ -86,4 +86,4 @@ else
   sudo docker-compose up -d
 fi
 
-echo "Helix installed with success"
+echo "Helix installed with success!"
