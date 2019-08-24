@@ -45,7 +45,7 @@ sudo systemctl start docker
 
 echo "Docker Engine and Docker compose installed with success."
 
-# Installing Helix Sandbox IoT MQTT
+# Installing Helix IoT MQTT
 if [[ $type -eq 2 ]]
 then
   echo "Installing Helix IoT MQTT"
