@@ -49,7 +49,7 @@ Container engine installation:
 
 ### Install Docker on Raspberry Raspbian 
 
-<a href="https://docs.docker.com/install/linux/docker-ce/debian/#install-using-the-convenience-script">docker</a>
+<a href="https://withblue.ink/2019/07/13/yes-you-can-run-docker-on-raspbian.html">docker</a>
 
 ### Manual installation (It is at your own risk!)
 
